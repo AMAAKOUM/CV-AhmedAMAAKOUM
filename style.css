@@ -1,0 +1,445 @@
+/* Variables CSS pour les couleurs */
+:root {
+    --primary-color: #007bff; /* Bleu vif pour les accents, buttons */
+    --secondary-color: #343a40; /* Gris foncé pour le background du header */
+    --text-color: #495057; /* Couleur de texte générale */
+    --light-text-color: #f8f9fa; /* Texte clair sur fond foncé */
+    --background-color: #f1f3f4; /* Arrière-plan des sections */
+    --card-background: #ffffff; /* Fond des blocs de contenu */
+    --border-color: #dee2e6; /* Bordures subtiles */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Ombres légères */
+    --highlight-color: #0056b3; /* Un bleu plus profond pour le nom/titre */
+}
+
+/* Réinitialisation de base et typographie */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+/* Styles spécifiques pour le header */
+.header {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    height: 20vh; /* 20% de la hauteur de la fenêtre */
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+   /* margin-right: 20px; */
+}
+
+.profile-photo-header {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    margin-right: 15px;
+}
+
+.text-info {
+    text-align: left;
+}
+
+.text-info h1 {
+    font-size: 2.5em;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--highlight-color); /* Couleur spécifique pour le nom */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Légère ombre pour le faire ressortir */
+}
+
+.profession {
+    font-size: 1.1em;
+    font-weight: 300;
+    margin-top: 5px;
+    color: var(--light-text-color);
+}
+
+/* Menu de navigation (boutons) */
+.main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.nav-button {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+    text-transform: uppercase; /* Met le texte des boutons en majuscules */
+    letter-spacing: 0.5px;
+}
+
+.nav-button:hover {
+    background-color: #0056b3; /* Couleur plus foncée au survol */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.nav-button.active {
+    background-color: #004085; /* Couleur plus foncée pour le bouton actif */
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+    pointer-events: none; /* Désactive le clic sur le bouton actif */
+}
+
+/* Contenu principal et iframe */
+.main-content {
+    padding-top: 20vh; /* Compense la hauteur du header fixe */
+    height: 80vh; /* Le reste de la page occupe 80% de la hauteur */
+    overflow: hidden; /* Empêche l'iframe de provoquer un double scroll */
+    position: relative; /* Pour positionner l'iframe */
+}
+
+.content-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block; /* Supprime l'espace par défaut en bas des iframes */
+}
+
+/* Styles pour les pages de contenu (à appliquer dans chaque HTML de "pages/") */
+/* Exemple pour presentation.html, competences.html, etc. */
+.section-page { /* Classe à ajouter au body ou div principal de chaque page de contenu */
+    background-color: var(--card-background);
+    padding: 30px;
+    margin: 30px auto; /* Centre le contenu dans l'iframe */
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    min-height: calc(100% - 60px); /* Ajuste la hauteur pour le padding */
+    box-sizing: border-box;
+}
+
+.section-page h2 {
+    font-size: 2.2em;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+    color: var(--primary-color);
+}
+
+/* Pour le texte de présentation dans presentation.html */
+.presentation-content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.presentation-content img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.presentation-content p {
+    flex: 1;
+    min-width: 280px;
+}
+.section-page .presentation-name{
+    font-size: 3em;
+    color: var(--highlight-color);
+    margin-bottom: 5px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+.section-page .presentation-profession{
+    font-size: 1.6em;
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 200;
+}
+.profile-photo-presenttaion{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.2);
+    flex-shrink: 0;
+    margin-bottom: 20px;
+}
+
+/* Styles pour les listes de compétences (dans competences.html) */
+.skills-category {
+    margin-bottom: 25px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-list li {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skills-list li i {
+    color: var(--light-text-color);
+}
+
+/* Styles pour expériences et formation (dans experiences.html, formation.html) */
+.job-entry, .edu-entry {
+    margin-bottom: 25px;
+    padding-left: 15px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.company, .school {
+    font-style: italic;
+    color: #555;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.job-entry ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+/* Styles pour Portfolio (dans portfolio.html) */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.portfolio-item {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    text-align: center;
+    padding-bottom: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.portfolio-item h3 {
+    margin: 15px 0 10px;
+    font-size: 1.4em;
+}
+
+.portfolio-item p {
+    padding: 0 15px;
+    margin-bottom: 15px;
+}
+
+.portfolio-item .btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-item .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styles pour Contact (dans contact.html) */
+.contact-list li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.contact-list li i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+.languages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+.language {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 18px;
+}
+.language img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-nav ul {
+        justify-content: center; /* Centre les boutons sur les écrans intermédiaires */
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: auto; /* Hauteur auto pour le header si le contenu s'empile */
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .header-content {
+        flex-direction: row; /* chagt de colonnes vers lignes  */
+        /* text-align: center; */
+        justify-content: space-between;
+        align-items: center;
+    }
+    .profile-info {
+        margin-bottom: 0;
+        /*
+        margin-right: 15px;
+        flex-direction: column;
+        */
+    }
+    .profile-photo-header {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    .text-info h1 {
+        font-size: 2em;
+    }
+    .profession {
+        font-size: 1em;
+    }
+    .main-nav ul {
+        margin-top: 0; /* un change de 15px vers 0 apres test */
+        justify-content: flex-end;
+    }
+    .nav-button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+    .main-content {
+        padding-top: 200px; /* Ajustez cette valeur si le header en mode mobile prend plus de place */
+        height: calc(100vh - 200px); /* Adaptez la hauteur restante */
+    }
+    .section-page {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .presentation-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .section-page .presentation-name{
+        font-size: 2.6em;
+    }
+    .section-page .presentation-profession{
+        font-size: 1.6em;
+    }
+    .profile-photo-presenttaion{
+        margin-bottom: 20px;
+    }
+    .skills-list li {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .header-content {
+        /* padding: 0 10px;*/
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .main-nav ul {
+        /* gap: 5px;  modifie apres test*/ 
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .profile-info{
+        margin-bottom: 15px;
+    }
+    .nav-button {
+        font-size: 0.8em;
+        padding: 7px 12px;
+    }
+    .section-page h2 {
+        font-size: 1.8em;
+    }
+}
